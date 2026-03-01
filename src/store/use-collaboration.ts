@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { getProvider } from './yjs-doc';
+import { useAuth } from './use-auth';
 import type { Vec3 } from '../types/map';
 
 export interface UserPresence {
@@ -19,6 +20,13 @@ function getRandomColor(): string {
 }
 
 function getUsername(): string {
+  // Use authenticated username if logged in
+  const authState = useAuth.getState();
+  if (authState.user) {
+    return authState.user.display_name ?? authState.user.username;
+  }
+
+  // Fall back to random localStorage name
   let name = localStorage.getItem('mortar-editor-username');
   if (!name) {
     name = `User-${Math.floor(Math.random() * 1000)}`;

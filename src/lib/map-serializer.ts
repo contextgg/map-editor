@@ -1,5 +1,6 @@
 import type { MapEntity, MapSettings, MortarMap } from '../types/map';
 import { getEntitiesSnapshot, ySettings } from '../store/yjs-doc';
+import { getAccessToken } from './auth';
 
 export function serializeMap(
   entities: MapEntity[],
@@ -51,9 +52,12 @@ export async function saveMapToServer(name: string): Promise<void> {
   const entities = getEntitiesSnapshot();
   const settings = getCurrentSettings();
   const map = serializeMap(entities, settings, name);
+  const headers: Record<string, string> = { 'Content-Type': 'application/json' };
+  const token = await getAccessToken();
+  if (token) headers['Authorization'] = `Bearer ${token}`;
   await fetch(`/api/maps/${encodeURIComponent(name)}`, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers,
     body: JSON.stringify(map),
   });
 }

@@ -7,6 +7,7 @@ import { PresenceBar } from './components/layout/PresenceBar';
 import { useEditorMode } from './store/use-editor-mode';
 import { useSelection } from './store/use-selection';
 import { useUndoRedo } from './store/use-undo-redo';
+import { useAuth } from './store/use-auth';
 import { removeEntity, addEntity, getEntitiesSnapshot } from './store/yjs-doc';
 import { v4 as uuidv4 } from 'uuid';
 import type { MapEntity } from './types/map';
@@ -15,6 +16,11 @@ export default function App() {
   const { setToolMode } = useEditorMode();
   const { selectedIds, clearSelection } = useSelection();
   const { undo, redo } = useUndoRedo();
+  const { initialize } = useAuth();
+
+  useEffect(() => {
+    initialize();
+  }, [initialize]);
 
   useEffect(() => {
     let clipboard: MapEntity[] = [];

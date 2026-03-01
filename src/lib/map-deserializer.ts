@@ -1,5 +1,6 @@
 import type { MapEntity, MapSettings, MortarMap } from '../types/map';
 import { ydoc, yEntities, ySettings, addEntity } from '../store/yjs-doc';
+import { getAccessToken } from './auth';
 
 export function deserializeMap(json: string): {
   entities: MapEntity[];
@@ -37,13 +38,19 @@ export function loadMapIntoYjs(map: MortarMap): void {
 }
 
 export async function loadMapFromServer(name: string): Promise<MortarMap | null> {
-  const res = await fetch(`/api/maps/${encodeURIComponent(name)}`);
+  const headers: Record<string, string> = {};
+  const token = await getAccessToken();
+  if (token) headers['Authorization'] = `Bearer ${token}`;
+  const res = await fetch(`/api/maps/${encodeURIComponent(name)}`, { headers });
   if (!res.ok) return null;
   return res.json();
 }
 
 export async function listMapsFromServer(): Promise<string[]> {
-  const res = await fetch('/api/maps');
+  const headers: Record<string, string> = {};
+  const token = await getAccessToken();
+  if (token) headers['Authorization'] = `Bearer ${token}`;
+  const res = await fetch('/api/maps', { headers });
   if (!res.ok) return [];
   return res.json();
 }

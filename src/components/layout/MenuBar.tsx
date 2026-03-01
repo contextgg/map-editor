@@ -3,6 +3,7 @@ import { exportMapAsJSON, saveMapToServer } from '../../lib/map-serializer';
 import { loadMapFromServer, listMapsFromServer, loadMapIntoYjs } from '../../lib/map-deserializer';
 import { ydoc, yEntities } from '../../store/yjs-doc';
 import { useUndoRedo } from '../../store/use-undo-redo';
+import { useAuth } from '../../store/use-auth';
 
 export function MenuBar() {
   const [showFileMenu, setShowFileMenu] = useState(false);
@@ -11,6 +12,7 @@ export function MenuBar() {
   const [availableMaps, setAvailableMaps] = useState<string[]>([]);
   const menuRef = useRef<HTMLDivElement>(null);
   const { undo, redo, canUndo, canRedo } = useUndoRedo();
+  const { user, loading, login, logout } = useAuth();
 
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
@@ -152,6 +154,45 @@ export function MenuBar() {
       </button>
 
       <div style={{ flex: 1 }} />
+
+      {/* Auth */}
+      {!loading && (
+        user ? (
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginRight: 8 }}>
+            <span style={{ fontSize: 12, color: '#ccc' }}>{user.username}</span>
+            <button
+              onClick={() => logout()}
+              style={{
+                padding: '3px 10px',
+                fontSize: 11,
+                background: '#333',
+                color: '#aaa',
+                border: '1px solid #444',
+                borderRadius: 3,
+                cursor: 'pointer',
+              }}
+            >
+              Sign Out
+            </button>
+          </div>
+        ) : (
+          <button
+            onClick={login}
+            style={{
+              padding: '3px 10px',
+              fontSize: 11,
+              background: '#333',
+              color: '#ccc',
+              border: '1px solid #444',
+              borderRadius: 3,
+              cursor: 'pointer',
+              marginRight: 8,
+            }}
+          >
+            Sign In
+          </button>
+        )
+      )}
 
       {/* Map Name */}
       <input
