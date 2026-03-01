@@ -12,7 +12,7 @@ export function MenuBar() {
   const [availableMaps, setAvailableMaps] = useState<string[]>([]);
   const menuRef = useRef<HTMLDivElement>(null);
   const { undo, redo, canUndo, canRedo } = useUndoRedo();
-  const { user, loading, login, logout } = useAuth();
+  const { user, logout } = useAuth();
 
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
@@ -156,42 +156,24 @@ export function MenuBar() {
       <div style={{ flex: 1 }} />
 
       {/* Auth */}
-      {!loading && (
-        user ? (
-          <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginRight: 8 }}>
-            <span style={{ fontSize: 12, color: '#ccc' }}>{user.username}</span>
-            <button
-              onClick={() => logout()}
-              style={{
-                padding: '3px 10px',
-                fontSize: 11,
-                background: '#333',
-                color: '#aaa',
-                border: '1px solid #444',
-                borderRadius: 3,
-                cursor: 'pointer',
-              }}
-            >
-              Sign Out
-            </button>
-          </div>
-        ) : (
+      {user && (
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginRight: 8 }}>
+          <span style={{ fontSize: 12, color: '#ccc' }}>{user.username}</span>
           <button
-            onClick={login}
+            onClick={async () => { await logout(); window.location.replace('/login'); }}
             style={{
               padding: '3px 10px',
               fontSize: 11,
               background: '#333',
-              color: '#ccc',
+              color: '#aaa',
               border: '1px solid #444',
               borderRadius: 3,
               cursor: 'pointer',
-              marginRight: 8,
             }}
           >
-            Sign In
+            Sign Out
           </button>
-        )
+        </div>
       )}
 
       {/* Map Name */}
