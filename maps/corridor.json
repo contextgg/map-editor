@@ -1,0 +1,140 @@
+{
+  "version": 1,
+  "name": "corridor",
+  "created_at": "2026-03-01T12:00:00.000Z",
+  "modified_at": "2026-03-01T12:00:00.000Z",
+  "settings": {
+    "ambient_color": [0.05, 0.05, 0.08, 1],
+    "gravity": [0, -9.81, 0]
+  },
+  "entities": [
+    {
+      "id": "b0000001-0000-0000-0000-000000000001",
+      "name": "Sun",
+      "type": "directional_light",
+      "transform": { "position": [0, 0, 0], "rotation": [0, 0, 0, 1], "scale": [1, 1, 1] },
+      "directional_light": { "direction": [-0.2, -0.9, -0.3], "color": [0.8, 0.85, 1], "intensity": 0.6 }
+    },
+    {
+      "id": "b0000001-0000-0000-0000-000000000010",
+      "name": "Floor",
+      "type": "geometry",
+      "mesh": "plane",
+      "transform": { "position": [0, 0, 0], "rotation": [0, 0, 0, 1], "scale": [1, 1, 1] },
+      "material": { "base_color": [0.25, 0.25, 0.28, 1], "emissive": [0, 0, 0, 0], "roughness": 0.6, "metallic": 0.2 },
+      "physics": { "type": "static", "shape": "box", "half_extents": [50, 0.1, 50] }
+    },
+    {
+      "id": "b0000001-0000-0000-0000-000000000020",
+      "name": "CorridorWallLeft",
+      "type": "geometry",
+      "mesh": "cube",
+      "transform": { "position": [-4, 2, 0], "rotation": [0, 0, 0, 1], "scale": [1, 4, 60] },
+      "material": { "base_color": [0.4, 0.38, 0.42, 1], "emissive": [0, 0, 0, 0], "roughness": 0.7, "metallic": 0.15 },
+      "physics": { "type": "static", "shape": "box", "half_extents": [0.5, 2, 30] }
+    },
+    {
+      "id": "b0000001-0000-0000-0000-000000000021",
+      "name": "CorridorWallRight",
+      "type": "geometry",
+      "mesh": "cube",
+      "transform": { "position": [4, 2, 0], "rotation": [0, 0, 0, 1], "scale": [1, 4, 60] },
+      "material": { "base_color": [0.4, 0.38, 0.42, 1], "emissive": [0, 0, 0, 0], "roughness": 0.7, "metallic": 0.15 },
+      "physics": { "type": "static", "shape": "box", "half_extents": [0.5, 2, 30] }
+    },
+    {
+      "id": "b0000001-0000-0000-0000-000000000030",
+      "name": "Barricade1",
+      "type": "geometry",
+      "mesh": "cube",
+      "transform": { "position": [-1.5, 0.5, -8], "rotation": [0, 0, 0, 1], "scale": [3, 1, 0.5] },
+      "material": { "base_color": [0.6, 0.4, 0.2, 1], "emissive": [0, 0, 0, 0], "roughness": 0.9, "metallic": 0 },
+      "physics": { "type": "static", "shape": "box", "half_extents": [1.5, 0.5, 0.25] }
+    },
+    {
+      "id": "b0000001-0000-0000-0000-000000000031",
+      "name": "Barricade2",
+      "type": "geometry",
+      "mesh": "cube",
+      "transform": { "position": [1.5, 0.5, -16], "rotation": [0, 0, 0, 1], "scale": [3, 1, 0.5] },
+      "material": { "base_color": [0.6, 0.4, 0.2, 1], "emissive": [0, 0, 0, 0], "roughness": 0.9, "metallic": 0 },
+      "physics": { "type": "static", "shape": "box", "half_extents": [1.5, 0.5, 0.25] }
+    },
+    {
+      "id": "b0000001-0000-0000-0000-000000000032",
+      "name": "Barricade3",
+      "type": "geometry",
+      "mesh": "cube",
+      "transform": { "position": [0, 0.5, -24], "rotation": [0, 0, 0, 1], "scale": [4, 1, 0.5] },
+      "material": { "base_color": [0.6, 0.4, 0.2, 1], "emissive": [0, 0, 0, 0], "roughness": 0.9, "metallic": 0 },
+      "physics": { "type": "static", "shape": "box", "half_extents": [2, 0.5, 0.25] }
+    },
+    {
+      "id": "b0000001-0000-0000-0000-000000000040",
+      "name": "CorridorLight1",
+      "type": "point_light",
+      "transform": { "position": [0, 3.5, 5], "rotation": [0, 0, 0, 1], "scale": [1, 1, 1] },
+      "point_light": { "color": [1, 0.7, 0.4], "intensity": 4, "radius": 12 }
+    },
+    {
+      "id": "b0000001-0000-0000-0000-000000000041",
+      "name": "CorridorLight2",
+      "type": "point_light",
+      "transform": { "position": [0, 3.5, -5], "rotation": [0, 0, 0, 1], "scale": [1, 1, 1] },
+      "point_light": { "color": [1, 0.7, 0.4], "intensity": 4, "radius": 12 }
+    },
+    {
+      "id": "b0000001-0000-0000-0000-000000000042",
+      "name": "CorridorLight3",
+      "type": "point_light",
+      "transform": { "position": [0, 3.5, -15], "rotation": [0, 0, 0, 1], "scale": [1, 1, 1] },
+      "point_light": { "color": [0.4, 0.6, 1], "intensity": 4, "radius": 12 }
+    },
+    {
+      "id": "b0000001-0000-0000-0000-000000000043",
+      "name": "CorridorLight4",
+      "type": "point_light",
+      "transform": { "position": [0, 3.5, -25], "rotation": [0, 0, 0, 1], "scale": [1, 1, 1] },
+      "point_light": { "color": [1, 0.3, 0.2], "intensity": 5, "radius": 12 }
+    },
+    {
+      "id": "b0000001-0000-0000-0000-000000000050",
+      "name": "Enemy1",
+      "type": "enemy_spawn",
+      "mesh": "humanoid",
+      "transform": { "position": [0, 0.5, -10], "rotation": [0, 0, 0, 1], "scale": [1, 1, 1] },
+      "material": { "base_color": [0.8, 0.15, 0.1, 1], "emissive": [0, 0, 0, 0], "roughness": 0.6, "metallic": 0.1 },
+      "health": { "current": 100, "max": 100 },
+      "ai_state": { "state": "idle", "detect_range": 15, "attack_range": 3, "move_speed": 4, "attack_cooldown": 1 },
+      "physics": { "type": "static", "shape": "box", "half_extents": [0.4, 0.5, 0.4] }
+    },
+    {
+      "id": "b0000001-0000-0000-0000-000000000051",
+      "name": "Enemy2",
+      "type": "enemy_spawn",
+      "mesh": "humanoid",
+      "transform": { "position": [2, 0.5, -18], "rotation": [0, 0, 0, 1], "scale": [1, 1, 1] },
+      "material": { "base_color": [0.8, 0.15, 0.1, 1], "emissive": [0, 0, 0, 0], "roughness": 0.6, "metallic": 0.1 },
+      "health": { "current": 100, "max": 100 },
+      "ai_state": { "state": "idle", "detect_range": 20, "attack_range": 3, "move_speed": 5, "attack_cooldown": 0.8 },
+      "physics": { "type": "static", "shape": "box", "half_extents": [0.4, 0.5, 0.4] }
+    },
+    {
+      "id": "b0000001-0000-0000-0000-000000000052",
+      "name": "Enemy3",
+      "type": "enemy_spawn",
+      "mesh": "humanoid",
+      "transform": { "position": [-1, 0.5, -26], "rotation": [0, 0, 0, 1], "scale": [1, 1, 1] },
+      "material": { "base_color": [0.9, 0.1, 0.05, 1], "emissive": [0.1, 0, 0, 0], "roughness": 0.5, "metallic": 0.2 },
+      "health": { "current": 150, "max": 150 },
+      "ai_state": { "state": "idle", "detect_range": 25, "attack_range": 4, "move_speed": 6, "attack_cooldown": 0.6 },
+      "physics": { "type": "static", "shape": "box", "half_extents": [0.4, 0.5, 0.4] }
+    },
+    {
+      "id": "b0000001-0000-0000-0000-000000000060",
+      "name": "PlayerSpawn",
+      "type": "player_spawn",
+      "transform": { "position": [0, 2, 12], "rotation": [0, 0, 0, 1], "scale": [1, 1, 1] }
+    }
+  ]
+}

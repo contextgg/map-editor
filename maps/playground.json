@@ -1,0 +1,158 @@
+{
+  "version": 1,
+  "name": "playground",
+  "created_at": "2026-03-01T12:00:00.000Z",
+  "modified_at": "2026-03-01T12:00:00.000Z",
+  "settings": {
+    "ambient_color": [0.12, 0.12, 0.18, 1],
+    "gravity": [0, -9.81, 0]
+  },
+  "entities": [
+    {
+      "id": "c0000001-0000-0000-0000-000000000001",
+      "name": "Sun",
+      "type": "directional_light",
+      "transform": { "position": [0, 0, 0], "rotation": [0, 0, 0, 1], "scale": [1, 1, 1] },
+      "directional_light": { "direction": [-0.5, -0.7, -0.3], "color": [1, 0.9, 0.8], "intensity": 1.0 }
+    },
+    {
+      "id": "c0000001-0000-0000-0000-000000000010",
+      "name": "Ground",
+      "type": "geometry",
+      "mesh": "plane",
+      "transform": { "position": [0, 0, 0], "rotation": [0, 0, 0, 1], "scale": [1, 1, 1] },
+      "material": { "base_color": [0.45, 0.55, 0.4, 1], "emissive": [0, 0, 0, 0], "roughness": 0.95, "metallic": 0 },
+      "physics": { "type": "static", "shape": "box", "half_extents": [50, 0.1, 50] }
+    },
+    {
+      "id": "c0000001-0000-0000-0000-000000000020",
+      "name": "Platform1",
+      "type": "geometry",
+      "mesh": "cube",
+      "transform": { "position": [6, 1, -6], "rotation": [0, 0, 0, 1], "scale": [4, 0.5, 4] },
+      "material": { "base_color": [0.7, 0.65, 0.6, 1], "emissive": [0, 0, 0, 0], "roughness": 0.6, "metallic": 0.2 },
+      "physics": { "type": "static", "shape": "box", "half_extents": [2, 0.25, 2] }
+    },
+    {
+      "id": "c0000001-0000-0000-0000-000000000021",
+      "name": "Platform2",
+      "type": "geometry",
+      "mesh": "cube",
+      "transform": { "position": [-6, 2, -6], "rotation": [0, 0, 0, 1], "scale": [4, 0.5, 4] },
+      "material": { "base_color": [0.7, 0.65, 0.6, 1], "emissive": [0, 0, 0, 0], "roughness": 0.6, "metallic": 0.2 },
+      "physics": { "type": "static", "shape": "box", "half_extents": [2, 0.25, 2] }
+    },
+    {
+      "id": "c0000001-0000-0000-0000-000000000022",
+      "name": "Platform3",
+      "type": "geometry",
+      "mesh": "cube",
+      "transform": { "position": [0, 3, -12], "rotation": [0, 0, 0, 1], "scale": [5, 0.5, 3] },
+      "material": { "base_color": [0.75, 0.7, 0.65, 1], "emissive": [0, 0, 0, 0], "roughness": 0.5, "metallic": 0.3 },
+      "physics": { "type": "static", "shape": "box", "half_extents": [2.5, 0.25, 1.5] }
+    },
+    {
+      "id": "c0000001-0000-0000-0000-000000000023",
+      "name": "Ramp",
+      "type": "geometry",
+      "mesh": "cube",
+      "transform": { "position": [6, 0.5, -3], "rotation": [0.15, 0, 0, 0.99], "scale": [3, 0.3, 4] },
+      "material": { "base_color": [0.6, 0.5, 0.4, 1], "emissive": [0, 0, 0, 0], "roughness": 0.8, "metallic": 0.1 },
+      "physics": { "type": "static", "shape": "box", "half_extents": [1.5, 0.15, 2] }
+    },
+    {
+      "id": "c0000001-0000-0000-0000-000000000030",
+      "name": "SpinnerRed",
+      "type": "destructible",
+      "mesh": "cube",
+      "transform": { "position": [-3, 0.5, 3], "rotation": [0, 0, 0, 1], "scale": [1, 1, 1] },
+      "material": { "base_color": [0.95, 0.15, 0.1, 1], "emissive": [0.2, 0, 0, 0], "roughness": 0.3, "metallic": 0.5 },
+      "physics": { "type": "static", "shape": "box", "half_extents": [0.5, 0.5, 0.5] },
+      "health": { "current": 40, "max": 40 },
+      "angular_velocity": { "axis": [0, 1, 0], "speed": 2.0 }
+    },
+    {
+      "id": "c0000001-0000-0000-0000-000000000031",
+      "name": "SpinnerGreen",
+      "type": "destructible",
+      "mesh": "cube",
+      "transform": { "position": [3, 0.5, 3], "rotation": [0, 0, 0, 1], "scale": [1, 1, 1] },
+      "material": { "base_color": [0.1, 0.85, 0.2, 1], "emissive": [0, 0.1, 0, 0], "roughness": 0.3, "metallic": 0.5 },
+      "physics": { "type": "static", "shape": "box", "half_extents": [0.5, 0.5, 0.5] },
+      "health": { "current": 40, "max": 40 },
+      "angular_velocity": { "axis": [0.5, 1, 0.3], "speed": 1.5 }
+    },
+    {
+      "id": "c0000001-0000-0000-0000-000000000032",
+      "name": "SpinnerBlue",
+      "type": "destructible",
+      "mesh": "cube",
+      "transform": { "position": [0, 0.5, 6], "rotation": [0, 0, 0, 1], "scale": [1.2, 1.2, 1.2] },
+      "material": { "base_color": [0.15, 0.3, 0.95, 1], "emissive": [0, 0, 0.15, 0], "roughness": 0.25, "metallic": 0.7 },
+      "physics": { "type": "static", "shape": "box", "half_extents": [0.6, 0.6, 0.6] },
+      "health": { "current": 60, "max": 60 },
+      "angular_velocity": { "axis": [0.2, 1, 0.5], "speed": 1.0 }
+    },
+    {
+      "id": "c0000001-0000-0000-0000-000000000033",
+      "name": "SpinnerGold",
+      "type": "destructible",
+      "mesh": "cube",
+      "transform": { "position": [0, 3.8, -12], "rotation": [0, 0, 0, 1], "scale": [0.7, 0.7, 0.7] },
+      "material": { "base_color": [1, 0.85, 0.2, 1], "emissive": [0.2, 0.15, 0, 0], "roughness": 0.2, "metallic": 0.9 },
+      "physics": { "type": "static", "shape": "box", "half_extents": [0.35, 0.35, 0.35] },
+      "health": { "current": 20, "max": 20 },
+      "angular_velocity": { "axis": [0.3, 1, 0.3], "speed": 3.0 }
+    },
+    {
+      "id": "c0000001-0000-0000-0000-000000000040",
+      "name": "WarmLight",
+      "type": "point_light",
+      "transform": { "position": [6, 4, -6], "rotation": [0, 0, 0, 1], "scale": [1, 1, 1] },
+      "point_light": { "color": [1, 0.8, 0.5], "intensity": 3, "radius": 15 }
+    },
+    {
+      "id": "c0000001-0000-0000-0000-000000000041",
+      "name": "CoolLight",
+      "type": "point_light",
+      "transform": { "position": [-6, 4, -6], "rotation": [0, 0, 0, 1], "scale": [1, 1, 1] },
+      "point_light": { "color": [0.5, 0.7, 1], "intensity": 3, "radius": 15 }
+    },
+    {
+      "id": "c0000001-0000-0000-0000-000000000042",
+      "name": "TopLight",
+      "type": "point_light",
+      "transform": { "position": [0, 6, -12], "rotation": [0, 0, 0, 1], "scale": [1, 1, 1] },
+      "point_light": { "color": [1, 0.9, 0.7], "intensity": 4, "radius": 20 }
+    },
+    {
+      "id": "c0000001-0000-0000-0000-000000000050",
+      "name": "Sparkles",
+      "type": "particle_emitter",
+      "transform": { "position": [0, 4.5, -12], "rotation": [0, 0, 0, 1], "scale": [1, 1, 1] },
+      "particle_emitter": {
+        "burst_count": 3,
+        "emit_interval": 0.5,
+        "start_color": [1, 0.9, 0.3, 1],
+        "end_color": [1, 0.5, 0, 0],
+        "start_size": 0.15,
+        "end_size": 0,
+        "lifetime": 1.0,
+        "speed": 2
+      }
+    },
+    {
+      "id": "c0000001-0000-0000-0000-000000000060",
+      "name": "Spawner",
+      "type": "spawner",
+      "transform": { "position": [0, 0, -20], "rotation": [0, 0, 0, 1], "scale": [1, 1, 1] },
+      "spawner_config": { "spawn_interval": 6, "max_count": 5, "spawn_radius": 10 }
+    },
+    {
+      "id": "c0000001-0000-0000-0000-000000000070",
+      "name": "PlayerSpawn",
+      "type": "player_spawn",
+      "transform": { "position": [0, 2, 8], "rotation": [0, 0, 0, 1], "scale": [1, 1, 1] }
+    }
+  ]
+}

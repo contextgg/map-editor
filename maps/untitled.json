@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "name": "untitled",
+  "created_at": "2026-03-01T01:12:32.044Z",
+  "modified_at": "2026-03-01T01:12:32.044Z",
+  "settings": {
+    "ambient_color": [
+      0.1,
+      0.1,
+      0.15,
+      1
+    ],
+    "gravity": [
+      0,
+      -9.81,
+      0
+    ]
+  },
+  "entities": []
+}
