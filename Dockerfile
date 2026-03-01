@@ -3,6 +3,8 @@ WORKDIR /app
 COPY package.json package-lock.json* ./
 RUN npm ci
 COPY . .
+ARG VITE_OIDC_ISSUER=https://auth.ctx.gg
+ENV VITE_OIDC_ISSUER=$VITE_OIDC_ISSUER
 RUN npm run build
 
 FROM node:20-slim
