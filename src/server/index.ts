@@ -1,16 +1,27 @@
 import express from 'express';
 import cors from 'cors';
 import http from 'http';
+import path from 'path';
+import { fileURLToPath } from 'url';
 import { WebSocketServer } from 'ws';
 import { registerRoutes } from './routes';
 import { ensureMapsDir } from './persistence';
 
-const PORT = 3001;
+const PORT = parseInt(process.env.PORT || '3001', 10);
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const app = express();
 app.use(cors());
 
 registerRoutes(app);
+
+// Serve static files in production
+const distPath = path.join(__dirname, '../../dist');
+app.use(express.static(distPath));
+app.get('*', (_req, res, next) => {
+  if (_req.path.startsWith('/api') || _req.path.startsWith('/yjs')) return next();
+  res.sendFile(path.join(distPath, 'index.html'));
+});
 
 const server = http.createServer(app);
 const wss = new WebSocketServer({ noServer: true });
